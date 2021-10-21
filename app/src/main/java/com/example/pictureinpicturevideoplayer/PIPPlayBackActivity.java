@@ -1,7 +1,6 @@
 package com.example.pictureinpicturevideoplayer;
 
 import android.app.PictureInPictureParams;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.media.MediaMetadata;
@@ -24,7 +23,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.pictureinpicturevideoplayer.databinding.ActivityPipplayBackBinding;
 
 public class PIPPlayBackActivity extends AppCompatActivity {
-    private static Context mContext;
     private final String TAG = PIPPlayBackActivity.class.getSimpleName();
     private ActivityPipplayBackBinding binding;
 
@@ -56,36 +54,27 @@ public class PIPPlayBackActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             mPictureInPictureParamsBuilder = new PictureInPictureParams.Builder();
         }
-        binding.pipBtn.setOnClickListener(mOnClickListener);
+
         videoView = binding.videoView;
         pipBtn = binding.pipBtn;
         setVideoView(getIntent());
         initializeMediaSession();
-    }
 
-    private final View.OnClickListener mOnClickListener =
-            new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    switch (view.getId()) {
-                        case R.id.pipBtn:
-                            pictureInPictureMode();
-                            break;
-                    }
-                }
-            };
+        binding.pipBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pictureInPictureMode();
+            }
+        });
+    }
 
     private void setVideoView(Intent intent){
         String videoURL = intent.getStringExtra("videoURL");
         Log.e(TAG,""+videoURL);
-
         // MediaController for play,Pause, seekBar, time etc
         mediaController = new MediaController(this);
-
         mediaController.setAnchorView(videoView);
-
         videoUri = Uri.parse(videoURL);
-
         Log.e(TAG, "videoUri:- " + videoURL);
         // Set media controller to videoView
         videoView.setMediaController(mediaController);
@@ -133,12 +122,10 @@ public class PIPPlayBackActivity extends AppCompatActivity {
             Log.e(TAG,"onPictureInPictureModeChanged: Entered PIP");
             // Hide Pip button and actionBar
             pipBtn.setVisibility(View.GONE);
-            //  actionBar.hide();
         }else {
             Log.e(TAG,"onPictureInPictureModeChanged: Exited PIP");
             // Show Pip button and actionBar
             pipBtn.setVisibility(View.VISIBLE);
-            //  actionBar.show();
         }
     }
 
@@ -151,8 +138,7 @@ public class PIPPlayBackActivity extends AppCompatActivity {
     }
 
     private void updatePlaybackState(int state, long playbackActions, int position, int mediaId) {
-        PlaybackState.Builder builder =
-                null;
+        PlaybackState.Builder builder = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             builder = new PlaybackState.Builder()
                     .setActions(playbackActions)
@@ -160,7 +146,6 @@ public class PIPPlayBackActivity extends AppCompatActivity {
                     .setState(state, position, 1.0f);
             mSession.setPlaybackState(builder.build());
         }
-
     }
 
 

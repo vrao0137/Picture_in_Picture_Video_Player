@@ -12,21 +12,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/videoOneBTN"
+        android:id="@+id/playVideoBtn"
         android:text="Play Video"/>
-
-    <!--Button: Click to play 2nd Video-->
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/videoTwoBTN"
-        android:text="Video Two"/>
-
-    <!--Button: Click to play 3rd Video-->
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/videoThreeBTN"
-        android:text="Video Three"/>
 
 </LinearLayout>

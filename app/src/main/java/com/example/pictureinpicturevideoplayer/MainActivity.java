@@ -16,13 +16,7 @@ import java.io.File;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private final String TAG = MainActivity.class.getSimpleName();
     private ActivityMainBinding binding;
-    Context context;
-
-    // Video urls/Links
-    private static final String videoUrlOne = "https://youtu.be/_BqOnkNpJvA";
-    private static final String videoUrlSecond = "https://youtu.be/PT2_F-1esPk";
-    private static final String videoUrlThird = "https://youtu.be/T3E9Wjbq44E";
-    String newPath;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initialize(){
         context = this;
-        binding.videoOneBTN.setOnClickListener(this);
-        binding.videoTwoBTN.setOnClickListener(this);
-        binding.videoThreeBTN.setOnClickListener(this);
-        /*File dir = Environment.getExternalStorageDirectory();
-        String path = dir.getAbsolutePath();
-        newPath = "file://storage/emulated/0/Why_Did_i_Answer.mp4";
-        Log.e(TAG,"path:- "+path+"/Why_Did_i_Answer.mp4");*/
+        binding.playVideoBtn.setOnClickListener(this);
     }
 
     private void playVideo(String videoUrl){
@@ -53,7 +41,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.videoOneBTN:
+            case R.id.playVideoBtn:
+                Log.e(TAG,"Video_URL:- "+"android.resource://" + getPackageName() + "/" + R.raw.why_did_i_answer);
                 playVideo("android.resource://" + getPackageName() + "/" + R.raw.why_did_i_answer);
                 break;
         }

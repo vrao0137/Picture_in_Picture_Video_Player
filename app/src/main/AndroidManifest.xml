@@ -21,12 +21,6 @@
             android:supportsPictureInPicture="true" />
 
         <activity
-            android:name=".PIPActivity"
-            android:configChanges="screenSize|smallestScreenSize|screenLayout|orientation"
-            android:launchMode="singleTask"
-            android:resizeableActivity="true"
-            android:supportsPictureInPicture="true" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
