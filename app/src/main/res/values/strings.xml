@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Picture in Picture Video Player</string>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar" />
+
+    <!--<style name="FullScreen" parent="AppTheme">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>-->
+</resources>
